@@ -10,7 +10,7 @@ navigator.geolocation.getCurrentPosition(async function (position) {
         var userdata = await map.json();
         let loc = userdata[0].name;
         //By using City name  we can get the weather details of that particular city from OpenWeatherMap API
-        let url = `https://api.openweathermap.org/data/2.5/forecast?&units=metric&`;
+        let url = `https://api.openweathermap.org/data/2.5/forecast?&units=imperial&`;
         let respond = await fetch(url + `q=${loc}&` + `appid=${apiKey}`);
         let data = await respond.json();
 
@@ -62,7 +62,7 @@ navigator.geolocation.getCurrentPosition(async function (position) {
         }
 
         // Fetch and display 5-day forecast data
-        const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${data.city.name}&appid=${apiKey}&units=metric`;
+        const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${data.city.name}&appid=${apiKey}&units=imperial`;
 
         fetch(forecastUrl)
             .then(response => response.json())
